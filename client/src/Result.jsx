@@ -37,7 +37,7 @@ function ResultPage() {
       try {
         setLoading(true);
         setError(null);
-        const res = await axios.get(`http://localhost:9000/user/${username}`, { timeout: 25000 });
+        const res = await axios.get(`https://influencer-analytics-web-page.vercel.app/user/${username}`, { timeout: 25000 });
         if (ignore) return;
         
         console.log("Profile response:", res.data);
@@ -73,7 +73,7 @@ function ResultPage() {
     setReelsError(null);
     try {
       const res = await axios.post(
-        `http://localhost:9000/user/${username}/reels`,
+        `https://influencer-analytics-web-page.vercel.app/user/${username}/reels`,
         null,
         { timeout: 30000 }
       );
@@ -112,7 +112,7 @@ function ResultPage() {
       console.log("🔍 Analyzing reel", reelIndex, "with image:", imageUrl);
       
       const res = await axios.post(
-        'http://localhost:9000/analyze-image',
+        'https://influencer-analytics-web-page.vercel.app/analyze-image',
         { imageUrl },
         { timeout: 15000 }
       );
@@ -192,7 +192,7 @@ function ResultPage() {
           <div className="flex justify-center">
             <div className="w-36 h-36 rounded-full border border-slate-700/70 overflow-hidden relative bg-slate-800">
               <img
-                src={`http://localhost:9000/proxy-image?url=${encodeURIComponent(user.profile_pic_url)}`}
+                src={`https://influencer-analytics-web-page.vercel.app/proxy-image?url=${encodeURIComponent(user.profile_pic_url)}`}
                 alt={user.username}
                 className="absolute inset-0 w-full h-full object-cover"
                 style={{ objectPosition: 'center', transform: 'scale(1.15)' }}
@@ -318,7 +318,7 @@ function ResultPage() {
                         <div className="flex-shrink-0 w-32 h-20 bg-slate-800 rounded-lg overflow-hidden">
                           {thumb ? (
                             <img
-                              src={`http://localhost:9000/proxy-image?url=${encodeURIComponent(thumb)}`}
+                              src={`https://influencer-analytics-web-page.vercel.app/proxy-image?url=${encodeURIComponent(thumb)}`}
                               alt={`Reel ${i + 1}`}
                               className="w-full h-full object-cover"
                               onError={(e) => {
@@ -466,5 +466,6 @@ function Stat({ label, value }) {
     </div>
   );
 }
+
 
 export default ResultPage;
