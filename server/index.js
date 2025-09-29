@@ -10,8 +10,10 @@ require('dotenv').config();
 
 // Middleware
 app.use(cors({
-    origin: ['http://localhost:5173', 'http://localhost:5174'] // Allow both ports
+    origin: ['https://influencer-analytics-web-page-vtbc.vercel.app']
 }));
+
+
 app.use(express.json());
 
 // Test Route
@@ -280,4 +282,5 @@ app.post("/analyze-image", async (req, res) => {
 const PORT = process.env.PORT || 9000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
+
 });
